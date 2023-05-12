@@ -1,0 +1,2 @@
+# syseduca
+School Management System
