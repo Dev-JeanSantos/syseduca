@@ -17,7 +17,7 @@ public class Institution {
     private String postalCode;
     private String email;
     private String city;
-    private char uf;
+    private String uf;
     private String complement;
     private String phone;
 
@@ -32,7 +32,7 @@ public class Institution {
                        String postalCode,
                        String email,
                        String city,
-                       char uf,
+                       String uf,
                        String complement,
                        String phone) {
         this.id = id;
@@ -112,11 +112,11 @@ public class Institution {
         this.city = city;
     }
 
-    public char getUf() {
+    public String getUf() {
         return uf;
     }
 
-    public void setUf(char uf) {
+    public void setUf(String uf) {
         this.uf = uf;
     }
 
