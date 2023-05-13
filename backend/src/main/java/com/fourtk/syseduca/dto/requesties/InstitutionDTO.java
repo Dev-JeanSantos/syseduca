@@ -1,14 +1,9 @@
-package com.fourtk.syseduca.models;
+package com.fourtk.syseduca.dto.requesties;
 
-import jakarta.persistence.*;
+import com.fourtk.syseduca.models.Institution;
 
-import java.util.Objects;
-@Entity
-@Table(name = "tb_institution")
-public class Institution {
+public class InstitutionDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String cnpj;
@@ -21,20 +16,19 @@ public class Institution {
     private String complement;
     private String phone;
 
-    public Institution() {
+    public InstitutionDTO() {
     }
 
-    public Institution(Long id,
-                       String name,
-                       String cnpj,
-                       String stateRegistration,
-                       String address,
-                       String postalCode,
-                       String email,
-                       String city,
-                       char uf,
-                       String complement,
-                       String phone) {
+    public InstitutionDTO(Long id, String name,
+                          String cnpj,
+                          String stateRegistration,
+                          String address,
+                          String postalCode,
+                          String email,
+                          String city,
+                          char uf,
+                          String complement,
+                          String phone) {
         this.id = id;
         this.name = name;
         this.cnpj = cnpj;
@@ -47,6 +41,22 @@ public class Institution {
         this.complement = complement;
         this.phone = phone;
     }
+    public InstitutionDTO(Institution entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.cnpj = entity.getCnpj();
+        this.stateRegistration = entity.getStateRegistration();
+        this.address = entity.getAddress();
+        this.postalCode = entity.getPostalCode();
+        this.email = entity.getEmail();
+        this.city = entity.getCity();
+        this.uf = entity.getUf();
+        this.complement = entity.getComplement();
+        this.phone = entity.getPhone();
+    }
+    public String getName() {
+        return name;
+    }
 
     public Long getId() {
         return id;
@@ -54,10 +64,6 @@ public class Institution {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
@@ -136,16 +142,4 @@ public class Institution {
         this.phone = phone;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Institution that = (Institution) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
