@@ -1,10 +1,14 @@
 package com.fourtk.syseduca.dto.requesties;
 
 import com.fourtk.syseduca.models.Institution;
+import com.fourtk.syseduca.services.validation.CnpjValid;
+import com.fourtk.syseduca.services.validation.EmailValid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+@EmailValid
+@CnpjValid
 public class InstitutionDTO {
 
     private Long id;
