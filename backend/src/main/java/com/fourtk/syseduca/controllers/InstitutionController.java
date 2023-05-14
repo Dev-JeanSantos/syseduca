@@ -2,6 +2,7 @@ package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.InstitutionDTO;
 import com.fourtk.syseduca.services.InstitutionService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class InstitutionController {
     private InstitutionService service;
 
     @PostMapping
-    public ResponseEntity<InstitutionDTO> insert(@RequestBody InstitutionDTO request){
+    public ResponseEntity<InstitutionDTO> insert(@Valid @RequestBody InstitutionDTO request){
         request = service.insert(request);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
                 path("/{id}").buildAndExpand(request.getId()).toUri();

@@ -1,19 +1,34 @@
 package com.fourtk.syseduca.dto.requesties;
 
 import com.fourtk.syseduca.models.Institution;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public class InstitutionDTO {
 
     private Long id;
+
+    @Size(min = 5, max = 60, message = "Name must be between 5 and 60 characters")
+    @NotBlank(message = "Required field")
     private String name;
+    @NotBlank(message = "Required field")
     private String cnpj;
+    @NotBlank(message = "Required field")
     private String stateRegistration;
+    @NotBlank(message = "Required field")
     private String address;
+    @NotBlank(message = "Required field")
     private String postalCode;
+    @NotBlank(message = "Required field")
+    @Email(message = "Enter with valid email")
     private String email;
+    @NotBlank(message = "Required field")
     private String city;
+    @NotBlank(message = "Required field")
     private String uf;
     private String complement;
+    @NotBlank(message = "Required field")
     private String phone;
 
     public InstitutionDTO() {
