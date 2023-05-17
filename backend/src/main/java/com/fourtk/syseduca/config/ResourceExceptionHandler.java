@@ -24,7 +24,7 @@ public class ResourceExceptionHandler {
 
         err.setTimestamp(Instant.now());
         err.setStatus(status.value());
-        err.setError("Recurso não Encontrado!");
+        err.setError("Resources Not Found!");
         err.setMessage(e.getMessage());
         err.setPath(request.getRequestURI());
 

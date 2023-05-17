@@ -11,10 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import java.net.URI;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping(value = "/institutions")
@@ -53,5 +51,36 @@ public class InstitutionController {
 
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<InstitutionDTO>findById(@PathVariable Long id){
+        logger.info("Start findById - Controller");
+
+        InstitutionDTO dto = service.findById(id);
+
+        logger.info("Finalized findById - Controller");
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<InstitutionDTO> update(@PathVariable Long id,@Valid @RequestBody InstitutionDTO dto){
+
+        logger.info("Start update - Controller");
+
+        dto = service.update(id, dto);
+
+        logger.info("Finalized update - Controller");
+        return ResponseEntity.ok().body(dto);
+
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<InstitutionDTO> delete(@PathVariable Long id){
+
+        logger.info("Start delete - Controller");
+        service.delete(id);
+        logger.info("Finalized delete - Controller");
+
+        return ResponseEntity.noContent().build();
+    }
 
 }
