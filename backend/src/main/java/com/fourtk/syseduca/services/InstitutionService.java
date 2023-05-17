@@ -1,5 +1,6 @@
 package com.fourtk.syseduca.services;
 
+import com.fourtk.syseduca.controllers.InstitutionController;
 import com.fourtk.syseduca.dto.requesties.InstitutionDTO;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
@@ -10,17 +11,23 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class InstitutionService {
+
+    Logger logger= Logger.getLogger(InstitutionController.class.getName());
     @Autowired
     private InstitutionRepository repository;
 
     public InstitutionDTO insert(InstitutionDTO request) {
+
+        logger.info("Start insertInstitution - Service");
         Institution entity = new Institution();
         copyDtoToEntity(request, entity);
         entity = repository.save(entity);
 
+        logger.info("Finalized insertInstitution - Service");
         return new InstitutionDTO(entity);
     }
 
@@ -37,12 +44,11 @@ public class InstitutionService {
         entity.setPhone(request.getPhone());
     }
 
-    public Page<InstitutionDTO> findAllPaged(String name, Long institutionId, PageRequest pageRequest) {
+    public Page<InstitutionDTO> findAllPaged(PageRequest pageRequest) {
 
-//        List<Institution> institutions = (institutionId == 0) ? null : Arrays.asList(repository.getOne(institutionId));
-
+        logger.info("Start GetAllInstitution - Service");
         Page<Institution> list = repository.findAll(pageRequest);
-
+        logger.info("Finalized GetAllInstitution - Service");
         return  list.map(x -> new InstitutionDTO(x));
     }
 }
