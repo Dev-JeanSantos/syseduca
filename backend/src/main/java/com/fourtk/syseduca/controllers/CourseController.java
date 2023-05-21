@@ -88,13 +88,32 @@ public class CourseController {
 
     @PutMapping(value = "/{id}/active")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void changeStatus(@PathVariable Long id){
+    public void changeStatusActive(@PathVariable Long id){
 
         logger.info("Start change status  - Controller");
         service.updateStatus(id, Status.ACTIVE);
         logger.info("Finalized change status  - Controller");
 
     }
+    @PutMapping(value = "/{id}/inactive")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void changeStatusInactive(@PathVariable Long id){
+
+        logger.info("Start change status  - Controller");
+        service.updateStatus(id, Status.INACTIVE);
+        logger.info("Finalized change status  - Controller");
+
+    }
+    @PutMapping(value = "/{id}/finished")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void changeStatusFinish(@PathVariable Long id){
+
+        logger.info("Start change status  - Controller");
+        service.updateStatus(id, Status.FINISHED);
+        logger.info("Finalized change status  - Controller");
+
+    }
 
 
 }
+
