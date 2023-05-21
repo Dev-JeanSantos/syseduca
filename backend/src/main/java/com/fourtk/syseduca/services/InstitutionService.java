@@ -1,7 +1,8 @@
 package com.fourtk.syseduca.services;
 
 import com.fourtk.syseduca.controllers.InstitutionController;
-import com.fourtk.syseduca.dto.requesties.InstitutionDTO;
+import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
+import com.fourtk.syseduca.dto.responses.InstitutionResponse;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
@@ -26,7 +27,7 @@ public class InstitutionService {
     private InstitutionRepository repository;
 
     @Transactional
-    public InstitutionDTO insert(InstitutionDTO request) {
+    public InstitutionRequest insert(InstitutionRequest request) {
 
         logger.info("Start insertInstitution - Service");
         Institution entity = new Institution();
@@ -34,20 +35,20 @@ public class InstitutionService {
         entity = repository.save(entity);
 
         logger.info("Finalized insertInstitution - Service");
-        return new InstitutionDTO(entity);
+        return new InstitutionRequest(entity);
     }
 
     @Transactional(readOnly = true)
-    public Page<InstitutionDTO> findAllPaged(PageRequest pageRequest) {
+    public Page<InstitutionResponse> findAllPaged(PageRequest pageRequest) {
 
         logger.info("Start GetAllInstitution - Service");
         Page<Institution> list = repository.findAll(pageRequest);
         logger.info("Finalized GetAllInstitution - Service");
-        return  list.map(x -> new InstitutionDTO(x));
+        return  list.map(x -> new InstitutionResponse(x));
     }
 
     @Transactional
-    public InstitutionDTO findById(Long id) {
+    public InstitutionRequest findById(Long id) {
 
         logger.info("Start FindById - Service");
         Optional<Institution> obj = repository.findById(id);
@@ -55,11 +56,11 @@ public class InstitutionService {
         Institution entity = obj.orElseThrow(() -> new ResourcesNotFoundException("Institution Not Found"));
 
         logger.info("Finalized FindById - Service");
-        return new InstitutionDTO(entity);
+        return new InstitutionRequest(entity);
     }
 
     @Transactional
-    public InstitutionDTO update(Long id, InstitutionDTO dto) {
+    public InstitutionRequest update(Long id, InstitutionRequest dto) {
 
         logger.info("Start Update - Service");
         try {
@@ -68,7 +69,7 @@ public class InstitutionService {
             entity =  repository.save(entity);
 
         logger.info("Finalized Update - Service");
-            return  new InstitutionDTO(entity);
+            return  new InstitutionRequest(entity);
         }catch (EntityNotFoundException e){
             throw new ResourcesNotFoundException(" Id Not Found "+ id);
         }
@@ -90,10 +91,10 @@ public class InstitutionService {
         }
     }
 
-    private void copyDtoToEntity(InstitutionDTO request, Institution entity) {
+    private void copyDtoToEntity(InstitutionRequest request, Institution entity) {
         entity.setName(request.getName());
         entity.setCnpj(request.getCnpj());
-        entity.setStateRegistration(request.getStateRegistration());
+        entity.setInep(request.getInep());
         entity.setAddress(request.getAddress());
         entity.setPostalCode(request.getPostalCode());
         entity.setEmail(request.getEmail());

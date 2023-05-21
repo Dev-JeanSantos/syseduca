@@ -1,6 +1,7 @@
 package com.fourtk.syseduca.controllers;
 
-import com.fourtk.syseduca.dto.requesties.InstitutionDTO;
+import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
+import com.fourtk.syseduca.dto.responses.InstitutionResponse;
 import com.fourtk.syseduca.services.InstitutionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class InstitutionController {
     private InstitutionService service;
 
     @PostMapping
-    public ResponseEntity<InstitutionDTO> insert(@Valid @RequestBody InstitutionDTO request){
+    public ResponseEntity<InstitutionRequest> insert(@Valid @RequestBody InstitutionRequest request){
         logger.info("Start InsertInstitution - Controller");
         request = service.insert(request);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
@@ -33,7 +34,7 @@ public class InstitutionController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<InstitutionDTO>> getAll(
+    public ResponseEntity<Page<InstitutionResponse>> getAll(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linePerPage,
             @RequestParam(value = "direction", defaultValue = "ASC") String direction,
@@ -44,7 +45,7 @@ public class InstitutionController {
         logger.info("Start GetAllInstitution - Controller");
         PageRequest pageRequest = PageRequest.of(page, linePerPage, Sort.Direction.valueOf(direction), orderBy);
 
-        Page<InstitutionDTO> list = service.findAllPaged(pageRequest);
+        Page<InstitutionResponse> list = service.findAllPaged(pageRequest);
 
         logger.info("Finalized GetAllInstitution - Controller");
         return  ResponseEntity.ok().body(list);
@@ -52,17 +53,17 @@ public class InstitutionController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<InstitutionDTO>findById(@PathVariable Long id){
+    public ResponseEntity<InstitutionRequest>findById(@PathVariable Long id){
         logger.info("Start findById - Controller");
 
-        InstitutionDTO dto = service.findById(id);
+        InstitutionRequest dto = service.findById(id);
 
         logger.info("Finalized findById - Controller");
         return ResponseEntity.ok().body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<InstitutionDTO> update(@PathVariable Long id,@Valid @RequestBody InstitutionDTO dto){
+    public ResponseEntity<InstitutionRequest> update(@PathVariable Long id, @Valid @RequestBody InstitutionRequest dto){
 
         logger.info("Start update - Controller");
 
@@ -74,7 +75,7 @@ public class InstitutionController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<InstitutionDTO> delete(@PathVariable Long id){
+    public ResponseEntity<InstitutionRequest> delete(@PathVariable Long id){
 
         logger.info("Start delete - Controller");
         service.delete(id);

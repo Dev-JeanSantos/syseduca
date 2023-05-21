@@ -1,7 +1,7 @@
 package com.fourtk.syseduca.services.validation;
 
 import com.fourtk.syseduca.config.FieldMessage;
-import com.fourtk.syseduca.dto.requesties.InstitutionDTO;
+import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
 import jakarta.validation.ConstraintValidator;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EmailValidator implements ConstraintValidator<EmailValid, InstitutionDTO> {
+public class EmailValidator implements ConstraintValidator<EmailValid, InstitutionRequest> {
 
     @Autowired
     private InstitutionRepository repository;
@@ -22,11 +22,11 @@ public class EmailValidator implements ConstraintValidator<EmailValid, Instituti
     }
 
     @Override
-    public boolean isValid(InstitutionDTO institutionDTO, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(InstitutionRequest institutionRequest, ConstraintValidatorContext constraintValidatorContext) {
 
         List<FieldMessage> list = new ArrayList<>();
 
-        Institution institution = repository.findByEmail(institutionDTO.getEmail());
+        Institution institution = repository.findByEmail(institutionRequest.getEmail());
         if (institution != null) {
             list.add(new FieldMessage("Email", "Email already exists"));
         }

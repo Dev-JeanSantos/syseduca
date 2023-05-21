@@ -1,4 +1,4 @@
-package com.fourtk.syseduca.dto.requesties;
+package com.fourtk.syseduca.dto.responses;
 
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.services.validation.CnpjValid;
@@ -9,49 +9,34 @@ import jakarta.validation.constraints.Size;
 
 @EmailValid
 @CnpjValid
-public class InstitutionDTO {
-
-    private Long id;
-
-    @Size(min = 5, max = 60, message = "Name must be between 5 and 60 characters")
-    @NotBlank(message = "Required field")
+public class InstitutionResponse {
     private String name;
-    @NotBlank(message = "Required field")
     private String cnpj;
-    @NotBlank(message = "Required field")
-    private String stateRegistration;
-    @NotBlank(message = "Required field")
+    private String inep;
     private String address;
-    @NotBlank(message = "Required field")
     private String postalCode;
-    @NotBlank(message = "Required field")
-    @Email(message = "Enter with valid email")
     private String email;
-    @NotBlank(message = "Required field")
     private String city;
-    @NotBlank(message = "Required field")
     private String uf;
     private String complement;
-    @NotBlank(message = "Required field")
     private String phone;
 
-    public InstitutionDTO() {
+    public InstitutionResponse() {
     }
 
-    public InstitutionDTO(Long id, String name,
-                          String cnpj,
-                          String stateRegistration,
-                          String address,
-                          String postalCode,
-                          String email,
-                          String city,
-                          String uf,
-                          String complement,
-                          String phone) {
-        this.id = id;
+    public InstitutionResponse(String name,
+                               String cnpj,
+                               String inep,
+                               String address,
+                               String postalCode,
+                               String email,
+                               String city,
+                               String uf,
+                               String complement,
+                               String phone) {
         this.name = name;
         this.cnpj = cnpj;
-        this.stateRegistration = stateRegistration;
+        this.inep = inep;
         this.address = address;
         this.postalCode = postalCode;
         this.email = email;
@@ -60,11 +45,10 @@ public class InstitutionDTO {
         this.complement = complement;
         this.phone = phone;
     }
-    public InstitutionDTO(Institution entity) {
-        this.id = entity.getId();
+    public InstitutionResponse(Institution entity) {
         this.name = entity.getName();
         this.cnpj = entity.getCnpj();
-        this.stateRegistration = entity.getStateRegistration();
+        this.inep = entity.getInep();
         this.address = entity.getAddress();
         this.postalCode = entity.getPostalCode();
         this.email = entity.getEmail();
@@ -76,15 +60,6 @@ public class InstitutionDTO {
     public String getName() {
         return name;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -97,12 +72,12 @@ public class InstitutionDTO {
         this.cnpj = cnpj;
     }
 
-    public String getStateRegistration() {
-        return stateRegistration;
+    public String getInep() {
+        return inep;
     }
 
-    public void setStateRegistration(String stateRegistration) {
-        this.stateRegistration = stateRegistration;
+    public void setInep(String inep) {
+        this.inep = inep;
     }
 
     public String getAddress() {
@@ -161,4 +136,19 @@ public class InstitutionDTO {
         this.phone = phone;
     }
 
+    @Override
+    public String toString() {
+        return "InstitutionResponse{" +
+                "name='" + name + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", inep='" + inep + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", uf='" + uf + '\'' +
+                ", complement='" + complement + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

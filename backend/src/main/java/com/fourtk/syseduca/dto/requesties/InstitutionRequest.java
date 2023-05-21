@@ -1,47 +1,53 @@
-package com.fourtk.syseduca.models;
+package com.fourtk.syseduca.dto.requesties;
 
-import jakarta.persistence.*;
+import com.fourtk.syseduca.models.Institution;
+import com.fourtk.syseduca.services.validation.CnpjValid;
+import com.fourtk.syseduca.services.validation.EmailValid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-@Entity
-@Table(name = "tb_institution")
-public class Institution {
+@EmailValid
+@CnpjValid
+public class InstitutionRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Size(min = 5, max = 60, message = "Name must be between 5 and 60 characters")
+    @NotBlank(message = "Required field")
     private String name;
+    @NotBlank(message = "Required field")
     private String cnpj;
+    @NotBlank(message = "Required field")
     private String inep;
+    @NotBlank(message = "Required field")
     private String address;
+    @NotBlank(message = "Required field")
     private String postalCode;
+    @NotBlank(message = "Required field")
+    @Email(message = "Enter with valid email")
     private String email;
+    @NotBlank(message = "Required field")
     private String city;
+    @NotBlank(message = "Required field")
     private String uf;
     private String complement;
+    @NotBlank(message = "Required field")
     private String phone;
 
-
-    @OneToMany(mappedBy = "institution",  fetch = FetchType.EAGER)
-    private List<Course> courses = new ArrayList<>();
-
-    public Institution() {
+    public InstitutionRequest() {
     }
 
-    public Institution(Long id,
-                       String name,
-                       String cnpj,
-                       String inep,
-                       String address,
-                       String postalCode,
-                       String email,
-                       String city,
-                       String uf,
-                       String complement,
-                       String phone,
-                       List<Course> courses) {
+    public InstitutionRequest(Long id, String name,
+                              String cnpj,
+                              String inep,
+                              String address,
+                              String postalCode,
+                              String email,
+                              String city,
+                              String uf,
+                              String complement,
+                              String phone) {
         this.id = id;
         this.name = name;
         this.cnpj = cnpj;
@@ -53,7 +59,22 @@ public class Institution {
         this.uf = uf;
         this.complement = complement;
         this.phone = phone;
-        this.courses = courses;
+    }
+    public InstitutionRequest(Institution entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.cnpj = entity.getCnpj();
+        this.inep = entity.getInep();
+        this.address = entity.getAddress();
+        this.postalCode = entity.getPostalCode();
+        this.email = entity.getEmail();
+        this.city = entity.getCity();
+        this.uf = entity.getUf();
+        this.complement = entity.getComplement();
+        this.phone = entity.getPhone();
+    }
+    public String getName() {
+        return name;
     }
 
     public Long getId() {
@@ -62,10 +83,6 @@ public class Institution {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
@@ -144,20 +161,4 @@ public class Institution {
         this.phone = phone;
     }
 
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Institution that = (Institution) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
