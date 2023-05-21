@@ -1,5 +1,6 @@
 package com.fourtk.syseduca.models;
 
+import com.fourtk.syseduca.enums.Segment;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -22,6 +23,9 @@ public class Course {
 
     private String periodicity;
 
+    @Enumerated(EnumType.STRING)
+    private Segment segment;
+
     private boolean status = true;
 
     @ManyToOne
@@ -35,12 +39,14 @@ public class Course {
                   String name,
                   Integer duration,
                   String periodicity,
+                  Segment segment,
                   boolean status,
                   Institution institution) {
         this.id = id;
         this.name = name;
         this.duration = duration;
         this.periodicity = periodicity;
+        this.segment = segment;
         this.status = status;
         this.institution = institution;
     }
@@ -91,6 +97,14 @@ public class Course {
 
     public void setInstitution(Institution institution) {
         this.institution = institution;
+    }
+
+    public Segment getSegment() {
+        return segment;
+    }
+
+    public void setSegment(Segment segment) {
+        this.segment = segment;
     }
 
     @Override

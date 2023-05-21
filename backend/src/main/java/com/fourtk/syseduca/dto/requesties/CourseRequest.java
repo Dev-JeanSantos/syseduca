@@ -1,5 +1,6 @@
 package com.fourtk.syseduca.dto.requesties;
 
+import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.models.Course;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,15 +26,25 @@ public class CourseRequest implements Serializable {
     @NotBlank(message = "Required field")
     private String periodicity;
 
+    @NotBlank
+    private Segment segment;
+
     private boolean status = true;
 
 
-    public CourseRequest(Long id, Long idInstitution, String name, Integer duration, String periodicity, boolean status) {
+    public CourseRequest(Long id,
+                         Long idInstitution,
+                         String name,
+                         Integer duration,
+                         String periodicity,
+                         Segment segment,
+                         boolean status) {
         this.id = id;
         this.idInstitution = idInstitution;
         this.name = name;
         this.duration = duration;
         this.periodicity = periodicity;
+        this.segment = segment;
         this.status = status;
     }
 
@@ -43,6 +54,7 @@ public class CourseRequest implements Serializable {
         this.name = entity.getName();
         this.duration = entity.getDuration();
         this.periodicity = entity.getPeriodicity();
+        this.segment = entity.getSegment();
         this.status = entity.isStatus();
     }
     public Long getId() {
@@ -83,6 +95,14 @@ public class CourseRequest implements Serializable {
 
     public void setPeriodicity(String periodicity) {
         this.periodicity = periodicity;
+    }
+
+    public Segment getSegment() {
+        return segment;
+    }
+
+    public void setSegment(Segment segment) {
+        this.segment = segment;
     }
 
     public boolean isStatus() {
