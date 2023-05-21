@@ -1,6 +1,7 @@
 package com.fourtk.syseduca.models;
 
 import com.fourtk.syseduca.enums.Segment;
+import com.fourtk.syseduca.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -26,7 +27,9 @@ public class Course {
     @Enumerated(EnumType.STRING)
     private Segment segment;
 
-    private boolean status = true;
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.WAITING;
 
     @ManyToOne
     @JoinColumn(name = "institution_id")
@@ -40,7 +43,7 @@ public class Course {
                   Integer duration,
                   String periodicity,
                   Segment segment,
-                  boolean status,
+                  Status status,
                   Institution institution) {
         this.id = id;
         this.name = name;
@@ -83,11 +86,11 @@ public class Course {
         this.periodicity = periodicity;
     }
 
-    public boolean isStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

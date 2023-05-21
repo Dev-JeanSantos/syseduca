@@ -91,7 +91,8 @@ public class CourseService {
         entity.setDuration(request.getDuration());
         entity.setPeriodicity(request.getPeriodicity());
         entity.setId(request.getId());
-        entity.setStatus(request.isStatus());
+        entity.setSegment(request.getSegment());
+        entity.setStatus(request.getStatus());
         Institution institution = institutionRepository.getOne(request.getIdInstitution());
         entity.setInstitution(institution);
     }

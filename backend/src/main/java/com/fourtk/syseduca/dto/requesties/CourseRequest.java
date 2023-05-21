@@ -1,6 +1,7 @@
 package com.fourtk.syseduca.dto.requesties;
 
 import com.fourtk.syseduca.enums.Segment;
+import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,8 +30,7 @@ public class CourseRequest implements Serializable {
     @NotBlank
     private Segment segment;
 
-    private boolean status = true;
-
+    private Status status = Status.WAITING;
 
     public CourseRequest(Long id,
                          Long idInstitution,
@@ -38,7 +38,7 @@ public class CourseRequest implements Serializable {
                          Integer duration,
                          String periodicity,
                          Segment segment,
-                         boolean status) {
+                         Status status) {
         this.id = id;
         this.idInstitution = idInstitution;
         this.name = name;
@@ -55,7 +55,7 @@ public class CourseRequest implements Serializable {
         this.duration = entity.getDuration();
         this.periodicity = entity.getPeriodicity();
         this.segment = entity.getSegment();
-        this.status = entity.isStatus();
+        this.status = Status.WAITING;
     }
     public Long getId() {
         return id;
@@ -105,11 +105,11 @@ public class CourseRequest implements Serializable {
         this.segment = segment;
     }
 
-    public boolean isStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }
