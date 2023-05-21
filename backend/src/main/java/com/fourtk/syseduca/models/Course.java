@@ -3,12 +3,8 @@ package com.fourtk.syseduca.models;
 import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -92,8 +88,8 @@ public class Course {
         this.periodicity = periodicity;
     }
 
-    public Status getStatus() {
-        return status;
+    public Status getStatus(Status status) {
+        return this.status;
     }
 
     public void setStatus(Status status) {
@@ -135,5 +131,20 @@ public class Course {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", duration=" + duration +
+                ", periodicity='" + periodicity + '\'' +
+                ", segment=" + segment +
+                ", status=" + status +
+                ", institution=" + institution +
+                ", dateCreate=" + dateCreate +
+                '}';
     }
 }

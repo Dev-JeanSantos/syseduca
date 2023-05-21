@@ -3,6 +3,7 @@ package com.fourtk.syseduca.services;
 import com.fourtk.syseduca.controllers.CourseController;
 import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
+import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.CourseRepository;
@@ -29,6 +30,8 @@ public class CourseService {
 
     @Autowired
     private InstitutionRepository institutionRepository;
+
+
     @Transactional
     public CourseRequest insert(CourseRequest request) {
 
@@ -75,6 +78,18 @@ public class CourseService {
             return  new CourseRequest(entity);
         }catch (EntityNotFoundException e){
             throw new ResourcesNotFoundException(" Id Not Found "+ id);
+        }
+    }
+
+    @Transactional
+    public void updateStatus(Long id, Status status) {
+
+        try {
+            Course entity = repository.getOne(id);
+            entity.setStatus(status);
+            repository.save(entity);
+        } catch (ResourcesNotFoundException e) {
+            throw new ResourcesNotFoundException("ID Not Found " + id);
         }
     }
 

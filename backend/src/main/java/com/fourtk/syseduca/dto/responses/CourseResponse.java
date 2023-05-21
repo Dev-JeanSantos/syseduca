@@ -3,9 +3,6 @@ package com.fourtk.syseduca.dto.responses;
 import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -41,7 +38,7 @@ public class CourseResponse implements Serializable {
         this.duration = entity.getDuration();
         this.periodicity = entity.getPeriodicity();
         this.segment = entity.getSegment();
-        this.status = entity.getStatus();
+        this.status = entity.getStatus(status);
         this.dateCreate = entity.getDateCreate();
     }
 

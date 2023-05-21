@@ -2,12 +2,14 @@ package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
+import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.services.CourseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -83,5 +85,16 @@ public class CourseController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/{id}/active")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void changeStatus(@PathVariable Long id){
+
+        logger.info("Start change status  - Controller");
+        service.updateStatus(id, Status.ACTIVE);
+        logger.info("Finalized change status  - Controller");
+
+    }
+
 
 }

@@ -4,7 +4,6 @@ import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -54,7 +53,7 @@ public class CourseRequest implements Serializable {
         this.duration = entity.getDuration();
         this.periodicity = entity.getPeriodicity();
         this.segment = entity.getSegment();
-        this.status = entity.getStatus();
+        this.status = entity.getStatus(status);
     }
     public Long getId() {
         return id;
