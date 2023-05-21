@@ -1,75 +1,48 @@
-package com.fourtk.syseduca.dto.requesties;
+package com.fourtk.syseduca.dto.responses;
 
 import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
-public class CourseRequest implements Serializable {
+public class CourseResponse implements Serializable {
 
     private static final Long serialVersionUID = 1L;
-    private Long id;
 
-    @NotNull
-    private Long idInstitution;
-
-    @Size(min = 5, max = 60, message = "Name must be between 5 and 60 characters")
-    @NotBlank(message = "Required field")
     private String name;
-
-    @NotNull(message = "Required field")
     private Integer duration;
-
-    @NotBlank(message = "Required field")
     private String periodicity;
-
     private Segment segment;
-    private Status status = Status.WAITING;
+    private Status status;
 
-    public CourseRequest(Long id,
-                         Long idInstitution,
-                         String name,
-                         Integer duration,
-                         String periodicity,
-                         Segment segment,
-                         Status status) {
-        this.id = id;
-        this.idInstitution = idInstitution;
+    private LocalDateTime dateCreate;
+
+    public CourseResponse(String name,
+                          Integer duration,
+                          String periodicity,
+                          Segment segment,
+                          Status status,
+                          LocalDateTime dateCreate) {
         this.name = name;
         this.duration = duration;
         this.periodicity = periodicity;
         this.segment = segment;
         this.status = status;
+        this.dateCreate = dateCreate;
     }
 
-    public CourseRequest(Course entity) {
-        this.id = entity.getId();
-        this.idInstitution = entity.getId();
+    public CourseResponse(Course entity) {
         this.name = entity.getName();
         this.duration = entity.getDuration();
         this.periodicity = entity.getPeriodicity();
         this.segment = entity.getSegment();
         this.status = entity.getStatus();
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getIdInstitution() {
-        return idInstitution;
-    }
-
-    public void setIdInstitution(Long idInstitution) {
-        this.idInstitution = idInstitution;
+        this.dateCreate = entity.getDateCreate();
     }
 
     public String getName() {
@@ -110,5 +83,25 @@ public class CourseRequest implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public LocalDateTime getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(LocalDateTime dateCreate) {
+        this.dateCreate = dateCreate;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseResponse{" +
+                "name='" + name + '\'' +
+                ", duration=" + duration +
+                ", periodicity='" + periodicity + '\'' +
+                ", segment=" + segment +
+                ", status=" + status +
+                ", dateCreate=" + dateCreate +
+                '}';
     }
 }

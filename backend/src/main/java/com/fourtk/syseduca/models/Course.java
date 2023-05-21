@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -29,11 +30,13 @@ public class Course {
 
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.WAITING;
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name = "institution_id")
     private Institution institution;
+
+    private LocalDateTime dateCreate  = LocalDateTime.now();
 
     public Course() {
     }
@@ -44,14 +47,17 @@ public class Course {
                   String periodicity,
                   Segment segment,
                   Status status,
-                  Institution institution) {
+                  Institution institution,
+                  LocalDateTime dateCreate) {
         this.id = id;
         this.name = name;
         this.duration = duration;
         this.periodicity = periodicity;
         this.segment = segment;
-        this.status = status;
+        this.status = Status.WAITING;
         this.institution = institution;
+        this.dateCreate = dateCreate;
+
     }
 
     public Long getId() {
@@ -108,6 +114,14 @@ public class Course {
 
     public void setSegment(Segment segment) {
         this.segment = segment;
+    }
+
+    public LocalDateTime getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(LocalDateTime dateCreate) {
+        this.dateCreate = dateCreate;
     }
 
     @Override
