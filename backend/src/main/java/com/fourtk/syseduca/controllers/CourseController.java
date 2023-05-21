@@ -62,17 +62,17 @@ public class CourseController {
         return ResponseEntity.ok().body(dto);
     }
 
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<CourseResponse> update(@PathVariable Long id,@Valid @RequestBody CourseRequest dto){
-//
-//        logger.info("Start update - Controller");
-//
-//        dto = service.update(id, dto);
-//
-//        logger.info("Finalized update - Controller");
-//        return ResponseEntity.ok().body(dto);
-//
-//    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CourseRequest> update(@PathVariable Long id,@Valid @RequestBody CourseRequest dto){
+
+        logger.info("Start update - Controller");
+
+        dto = service.update(id, dto);
+
+        logger.info("Finalized update - Controller");
+        return ResponseEntity.ok().body(dto);
+
+    }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<CourseResponse> delete(@PathVariable Long id){

@@ -63,16 +63,16 @@ public class CourseService {
     }
 
     @Transactional
-    public CourseResponse update(Long id, CourseRequest dto) {
+    public CourseRequest update(Long id, CourseRequest dto) {
 
         logger.info("Start Update - Service");
         try {
             Course entity =  repository.getOne(id);
-            copyDtoToEntity(dto, entity);
+            copyUpdateToEntity(dto, entity);
             entity =  repository.save(entity);
 
         logger.info("Finalized Update - Service");
-            return  new CourseResponse(entity);
+            return  new CourseRequest(entity);
         }catch (EntityNotFoundException e){
             throw new ResourcesNotFoundException(" Id Not Found "+ id);
         }
@@ -102,5 +102,15 @@ public class CourseService {
         entity.setStatus(request.getStatus());
         Institution institution = institutionRepository.getOne(request.getIdInstitution());
         entity.setInstitution(institution);
+    }
+    private void copyUpdateToEntity(CourseRequest request, Course entity) {
+        Institution institution = institutionRepository.getOne(request.getIdInstitution());
+        entity.setInstitution(institution);
+
+        entity.setName(request.getName());
+        entity.setDuration(request.getDuration());
+        entity.setPeriodicity(request.getPeriodicity());
+        entity.setStatus(request.getStatus());
+        entity.setSegment(request.getSegment());
     }
 }
