@@ -4,6 +4,7 @@ import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.services.CourseService;
+import com.fourtk.syseduca.vos.CoursesOfInstitutionVO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -114,6 +116,17 @@ public class CourseController {
 
     }
 
+    @GetMapping(value = "/reports")
+    public ResponseEntity<List<CoursesOfInstitutionVO>> coursesOfInstitution(){
+
+        String nameInstitution = "IASMIM";
+        logger.info("Start coursesOfInstitution - Controller");
+        System.out.println(nameInstitution);
+        List<CoursesOfInstitutionVO> lists = service.findByName(nameInstitution);
+        logger.info("Finalized coursesOfInstitution - Controller");
+
+        return ResponseEntity.ok().body(lists);
+    }
 
 }
 

@@ -10,6 +10,7 @@ import com.fourtk.syseduca.repositories.CourseRepository;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
 import com.fourtk.syseduca.services.exceptions.ResourcesNotFoundException;
+import com.fourtk.syseduca.vos.CoursesOfInstitutionVO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -127,5 +129,13 @@ public class CourseService {
         entity.setPeriodicity(request.getPeriodicity());
         entity.setStatus(request.getStatus());
         entity.setSegment(request.getSegment());
+    }
+
+    public List<CoursesOfInstitutionVO> findByName(String nameInstitution) {
+//        Institution institution = institutionRepository.findByName(nameInstitution);
+
+        return repository.getCoursesByInstitution(nameInstitution);
+
+
     }
 }
