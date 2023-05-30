@@ -5,7 +5,9 @@ import com.fourtk.syseduca.enums.Status;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_course")
@@ -31,6 +33,12 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "institution_id")
     private Institution institution;
+
+    @ManyToMany
+    @JoinTable( name = "tb_course_discipline",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "discipline_id"))
+    Set<Discipline> disciplines = new HashSet<>();
 
     private LocalDateTime dateCreate  = LocalDateTime.now();
 
@@ -118,6 +126,10 @@ public class Course {
 
     public void setDateCreate(LocalDateTime dateCreate) {
         this.dateCreate = dateCreate;
+    }
+
+    public Set<Discipline> getDisciplines() {
+        return disciplines;
     }
 
     @Override

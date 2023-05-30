@@ -9,9 +9,6 @@ INSERT INTO tb_institution ( name, cnpj, inep , address, postal_code, email, cit
 INSERT INTO tb_institution ( name, cnpj, inep , address, postal_code, email, city, uf, complement, phone) VALUES ('INSTITUTO EDUCACIONAL CASTELINHO ENCANTADO','222222227/0001-33', '33099944', 'RUA MANOEL JOAO GONCALVES, 571 CENTRO', '000000-001', 'castelinho@gmail.com', 'Tanguá', 'RJ', 'S/C', ' (21) 2747-1375');
 
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'MATERNAL',4,'BIMESTRE','WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
-INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'PRIMEIRO PERIODO',4,'BIMESTRE', 'WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
-INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'SEGUNDO PERIODO',4,'BIMESTRE', 'WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
-INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'PRIMEIRO ANO',4,'BIMESTRE', 'WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'PRIMEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'SEGUNDO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'TERCEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
@@ -20,19 +17,56 @@ INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, seg
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'SEXTO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'SETIMO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'OITAVO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
+INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'NONO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'MATERNAL',4,'BIMESTRE', 'WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'PRIMEIRO PERIODO',4,'BIMESTRE', 'WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'SEGUNDO PERIODO',4,'BIMESTRE', 'WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
-INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'PRIMEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
-INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'PRIMEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
-INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'SEGUNDO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'TERCEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'QUARTO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'QUINTO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'SEXTO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'SETIMO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'OITAVO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
+INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'NONO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
+
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('LÍNGUA PORTUGUESA', 80, 4,'BIMESTRE','ACTIVE', 1);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('MATEMÁTICA', 80, 4,'BIMESTRE','ACTIVE', 2);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('HISTÓRIA', 40, 4,'BIMESTRE','ACTIVE', 3);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('GEOGRAFIA', 40, 4,'BIMESTRE','ACTIVE', 4);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('LÍNGUA INGLESA', 40, 4,'BIMESTRE','ACTIVE', 5);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('CIÊNCIAS', 40, 4,'BIMESTRE','ACTIVE', 6);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('ARTES', 40, 4,'BIMESTRE','ACTIVE', 7);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('EDUCAÇÃO FÍSICA', 40, 4,'BIMESTRE','ACTIVE', 8);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('EDUCAÇÃO MORAL E CÍVICA', 20, 4,'BIMESTRE','ACTIVE', 9);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('ENSINO RELIGIOSO', 20, 4,'BIMESTRE','ACTIVE', 10);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('MÚSICA', 20, 4,'BIMESTRE','ACTIVE', 11);
+
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,1);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,2);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,3);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,4);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,5);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,6);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,7);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,8);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,9);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,10);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,11);
+
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,1);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,2);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,3);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,4);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,5);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,6);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,7);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,8);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,9);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,10);
+INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (2,11);
+
+
 
 -- Consultas:
 --SELECT i.name Escola, c.name Cursos FROM TB_INSTITUTION  i inner join tb_course c on i.id = c.institution_id

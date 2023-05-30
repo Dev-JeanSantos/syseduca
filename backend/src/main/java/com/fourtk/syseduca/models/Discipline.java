@@ -8,10 +8,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "tb_disciplines")
+@Table(name = "tb_discipline")
 public class Discipline {
 
     @Id
@@ -35,9 +37,17 @@ public class Discipline {
     @NotNull(message = "Required field")
     private Integer disciplineCode;
 
-    private Status status = Status.WAITING;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
+
+    @ManyToMany(mappedBy = "disciplines")
+    private Set<Course> courses = new HashSet<>();
 
     public Discipline() {
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
     }
 
     public Discipline(Long id,
