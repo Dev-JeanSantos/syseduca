@@ -1,14 +1,15 @@
 package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.DisciplineRequest;
+import com.fourtk.syseduca.dto.responses.DisciplineResponse;
 import com.fourtk.syseduca.services.DisciplineService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -33,24 +34,24 @@ public class DisciplineController {
         return ResponseEntity.created(uri).body(request);
     }
 
-//    @GetMapping
-//    public ResponseEntity<Page<CourseResponse>> getAll(
-//            @RequestParam(value = "page", defaultValue = "0") Integer page,
-//            @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linePerPage,
-//            @RequestParam(value = "direction", defaultValue = "ASC") String direction,
-//            @RequestParam(value = "orderBy", defaultValue = "name") String orderBy
-//
-//    ){
-//
-//        logger.info("Start GetAllCourse - Controller");
-//        PageRequest pageRequest = PageRequest.of(page, linePerPage, Sort.Direction.valueOf(direction), orderBy);
-//
-//        Page<CourseResponse> list = service.findAllPaged(pageRequest);
-//
-//        logger.info("Finalized GetAllCourse - Controller");
-//        return  ResponseEntity.ok().body(list);
-//
-//    }
+    @GetMapping
+    public ResponseEntity<Page<DisciplineResponse>> getAll(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linePerPage,
+            @RequestParam(value = "direction", defaultValue = "ASC") String direction,
+            @RequestParam(value = "orderBy", defaultValue = "name") String orderBy
+
+    ){
+
+        logger.info("Start GetAllCourse - Controller");
+        PageRequest pageRequest = PageRequest.of(page, linePerPage, Sort.Direction.valueOf(direction), orderBy);
+
+        Page<DisciplineResponse> list = service.findAllPaged(pageRequest);
+
+        logger.info("Finalized GetAllCourse - Controller");
+        return  ResponseEntity.ok().body(list);
+
+    }
 //
 //    @GetMapping(value = "/{id}")
 //    public ResponseEntity<CourseResponse>findById(@PathVariable Long id){
