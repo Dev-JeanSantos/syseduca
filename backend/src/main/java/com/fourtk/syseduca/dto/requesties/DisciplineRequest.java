@@ -2,10 +2,12 @@ package com.fourtk.syseduca.dto.requesties;
 
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Discipline;
+import com.fourtk.syseduca.services.validation.DisciplineCodeValid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@DisciplineCodeValid
 public class DisciplineRequest {
 
     private Long id;
