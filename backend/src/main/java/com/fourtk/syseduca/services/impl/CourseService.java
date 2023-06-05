@@ -1,4 +1,4 @@
-package com.fourtk.syseduca.services;
+package com.fourtk.syseduca.services.impl;
 
 import com.fourtk.syseduca.controllers.CourseController;
 import com.fourtk.syseduca.dto.requesties.CourseRequest;
@@ -8,6 +8,7 @@ import com.fourtk.syseduca.models.Course;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.CourseRepository;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
+import com.fourtk.syseduca.services.ICourseService;
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
 import com.fourtk.syseduca.services.exceptions.ResourcesNotFoundException;
 import com.fourtk.syseduca.vos.CoursesOfInstitutionVO;
@@ -24,7 +25,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class CourseService {
+public class CourseService implements ICourseService {
 
     Logger logger= Logger.getLogger(CourseController.class.getName());
     @Autowired

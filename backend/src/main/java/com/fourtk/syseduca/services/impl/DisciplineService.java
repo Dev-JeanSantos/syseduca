@@ -1,19 +1,20 @@
-package com.fourtk.syseduca.services;
+package com.fourtk.syseduca.services.impl;
 
 import com.fourtk.syseduca.controllers.CourseController;
 import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.requesties.DisciplineRequest;
 import com.fourtk.syseduca.dto.responses.DisciplineResponse;
-import com.fourtk.syseduca.models.Course;
 import com.fourtk.syseduca.models.Discipline;
-import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.DisciplineRepository;
+import com.fourtk.syseduca.services.exceptions.ResourcesNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -44,34 +45,35 @@ public class DisciplineService {
         return  list.map(x -> new DisciplineResponse(x));
     }
 
+    // TODO: 29/05/2023 Implemetar EndPoint buscar por codigo da dsiciplina ao inves do Id
     @Transactional
-//    public CourseResponse findById(Long id) {
-//
-//        logger.info("Start FindById - Service");
-//        Optional<Course> obj = repository.findById(id);
-//
-//        Course entity = obj.orElseThrow(() -> new ResourcesNotFoundException("Course Not Found"));
-//
-//        logger.info("Finalized FindById - Service");
-//        return new CourseResponse(entity);
-//    }
-//
-//    @Transactional
-//    public CourseRequest update(Long id, CourseRequest dto) {
-//
-//        logger.info("Start Update - Service");
-//        try {
-//            Course entity =  repository.getOne(id);
-//            copyUpdateToEntity(dto, entity);
-//            entity =  repository.save(entity);
-//
-//        logger.info("Finalized Update - Service");
-//            return  new CourseRequest(entity);
-//        }catch (EntityNotFoundException e){
-//            throw new ResourcesNotFoundException(" Id Not Found "+ id);
-//        }
-//    }
-//
+    public DisciplineResponse findById(Long id) {
+
+        logger.info("Start FindById - Service");
+        Optional<Discipline> obj = repository.findById(id);
+
+        Discipline entity = obj.orElseThrow(() -> new ResourcesNotFoundException("Course Not Found"));
+
+        logger.info("Finalized FindById - Service");
+        return new DisciplineResponse(entity);
+    }
+
+    @Transactional
+    public DisciplineRequest update(Long id, DisciplineRequest dto) {
+
+        logger.info("Start Update - Service");
+        try {
+            Discipline entity =  repository.getOne(id);
+            copyDtoToEntity(dto, entity);
+            entity =  repository.save(entity);
+
+        logger.info("Finalized Update - Service");
+            return  new DisciplineRequest(entity);
+        }catch (EntityNotFoundException e){
+            throw new ResourcesNotFoundException(" Id Not Found "+ id);
+        }
+    }
+
 //    @Transactional
 //    public void updateStatus(Long id, Status status) {
 //

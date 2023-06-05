@@ -3,7 +3,7 @@ package com.fourtk.syseduca.controllers;
 import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
 import com.fourtk.syseduca.enums.Status;
-import com.fourtk.syseduca.services.CourseService;
+import com.fourtk.syseduca.services.impl.CourseService;
 import com.fourtk.syseduca.vos.CoursesOfInstitutionVO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

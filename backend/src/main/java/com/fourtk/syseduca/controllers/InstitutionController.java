@@ -2,7 +2,7 @@ package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
 import com.fourtk.syseduca.dto.responses.InstitutionResponse;
-import com.fourtk.syseduca.services.InstitutionService;
+import com.fourtk.syseduca.services.impl.InstitutionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

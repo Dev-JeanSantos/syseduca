@@ -1,10 +1,11 @@
-package com.fourtk.syseduca.services;
+package com.fourtk.syseduca.services.impl;
 
 import com.fourtk.syseduca.controllers.InstitutionController;
 import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
 import com.fourtk.syseduca.dto.responses.InstitutionResponse;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
+import com.fourtk.syseduca.services.IInstitutionService;
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
 import com.fourtk.syseduca.services.exceptions.ResourcesNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -20,7 +21,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class InstitutionService {
+public class InstitutionService implements IInstitutionService {
 
     Logger logger= Logger.getLogger(InstitutionController.class.getName());
     @Autowired

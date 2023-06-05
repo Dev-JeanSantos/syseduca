@@ -2,7 +2,7 @@ package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.DisciplineRequest;
 import com.fourtk.syseduca.dto.responses.DisciplineResponse;
-import com.fourtk.syseduca.services.DisciplineService;
+import com.fourtk.syseduca.services.impl.DisciplineService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -52,28 +52,28 @@ public class DisciplineController {
         return  ResponseEntity.ok().body(list);
 
     }
-//
-//    @GetMapping(value = "/{id}")
-//    public ResponseEntity<CourseResponse>findById(@PathVariable Long id){
-//        logger.info("Start findById - Controller");
-//
-//        CourseResponse dto = service.findById(id);
-//
-//        logger.info("Finalized findById - Controller");
-//        return ResponseEntity.ok().body(dto);
-//    }
-//
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<CourseRequest> update(@PathVariable Long id,@Valid @RequestBody CourseRequest dto){
-//
-//        logger.info("Start update - Controller");
-//
-//        dto = service.update(id, dto);
-//
-//        logger.info("Finalized update - Controller");
-//        return ResponseEntity.ok().body(dto);
-//
-//    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<DisciplineResponse>findById(@PathVariable Long id){
+        logger.info("Start findById - Controller");
+
+        DisciplineResponse dto = service.findById(id);
+
+        logger.info("Finalized findById - Controller");
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<DisciplineRequest> update(@PathVariable Long id,@Valid @RequestBody DisciplineRequest dto){
+
+        logger.info("Start update - Controller");
+
+        dto = service.update(id, dto);
+
+        logger.info("Finalized update - Controller");
+        return ResponseEntity.ok().body(dto);
+
+    }
 //
 //    @DeleteMapping(value = "/{id}")
 //    public ResponseEntity<CourseResponse> delete(@PathVariable Long id){
