@@ -4,7 +4,6 @@ import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.services.impl.CourseService;
-import com.fourtk.syseduca.vos.CoursesOfInstitutionVO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
@@ -54,6 +52,24 @@ public class CourseController {
         logger.info("Finalized GetAllCourse - Controller");
         return  ResponseEntity.ok().body(list);
 
+    }
+
+    @GetMapping(value = "/reports")
+    public ResponseEntity<Page<CourseResponse>> coursesOfInstitution(
+            @RequestParam(value = "nameInstitution", defaultValue = "0") String nameInstitution,
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linePerPage,
+            @RequestParam(value = "direction", defaultValue = "ASC") String direction,
+            @RequestParam(value = "orderBy", defaultValue = "name") String orderBy
+    ){
+//        String nameInstitution = "IASMIM";
+        PageRequest pageRequest = PageRequest.of(page, linePerPage, Sort.Direction.valueOf(direction), orderBy);
+        logger.info("Start coursesOfInstitution - Controller");
+        System.out.println(nameInstitution);
+        Page<CourseResponse> lists = service.coursesOfInstitution(nameInstitution, pageRequest);
+        logger.info("Finalized coursesOfInstitution - Controller");
+
+        return ResponseEntity.ok().body(lists);
     }
 
     @GetMapping(value = "/{id}")
@@ -115,18 +131,5 @@ public class CourseController {
         logger.info("Finalized change status  - Controller");
 
     }
-
-    @GetMapping(value = "/reports")
-    public ResponseEntity<List<CoursesOfInstitutionVO>> coursesOfInstitution(){
-
-        String nameInstitution = "IASMIM";
-        logger.info("Start coursesOfInstitution - Controller");
-        System.out.println(nameInstitution);
-        List<CoursesOfInstitutionVO> lists = service.findByName(nameInstitution);
-        logger.info("Finalized coursesOfInstitution - Controller");
-
-        return ResponseEntity.ok().body(lists);
-    }
-
 }
 

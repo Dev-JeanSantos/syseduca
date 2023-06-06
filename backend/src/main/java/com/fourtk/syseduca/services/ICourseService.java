@@ -25,5 +25,5 @@ public interface ICourseService {
 
     public void delete(Long id);
 
-    public List<CoursesOfInstitutionVO> findByName(String nameInstitution);
+    public Page<CourseResponse> coursesOfInstitution(String nameInstitution,  PageRequest pageRequest);
 }

@@ -11,8 +11,8 @@ import com.fourtk.syseduca.repositories.InstitutionRepository;
 import com.fourtk.syseduca.services.ICourseService;
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
 import com.fourtk.syseduca.services.exceptions.ResourcesNotFoundException;
-import com.fourtk.syseduca.vos.CoursesOfInstitutionVO;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -20,7 +20,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -54,6 +53,18 @@ public class CourseService implements ICourseService {
         Page<Course> list = repository.findAll(pageRequest);
         logger.info("Finalized GetAllCourse - Service");
         return  list.map(x -> new CourseResponse(x));
+    }
+
+    @Transactional(readOnly = true)
+    public Page<CourseResponse> coursesOfInstitution(String nameInstitution, PageRequest pageRequest) {
+
+        nameInstitution = nameInstitution.toUpperCase();
+        Optional<Institution> possibleInsititution = institutionRepository.GetIdbyName(nameInstitution);
+        Institution institution = possibleInsititution.orElseThrow(() -> new ResourcesNotFoundException("Institution Not Found"));
+//        possibleInsititution.orElseThrow(() -> new NonUniqueResultException("Mellhore sua busca"));
+
+        Page<Course> coursesByInstitution = repository.buscarCursosPorNomeInstituicao(institution.getId(), pageRequest);
+        return coursesByInstitution.map(CourseResponse::new);
     }
 
     @Transactional
@@ -131,12 +142,5 @@ public class CourseService implements ICourseService {
         entity.setStatus(request.getStatus());
         entity.setSegment(request.getSegment());
     }
-
-    public List<CoursesOfInstitutionVO> findByName(String nameInstitution) {
-//        Institution institution = institutionRepository.findByName(nameInstitution);
-
-        return repository.getCoursesByInstitution(nameInstitution);
-
-
-    }
 }
+
