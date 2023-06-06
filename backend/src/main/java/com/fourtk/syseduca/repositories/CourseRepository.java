@@ -16,5 +16,5 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
     @Query(value = "SELECT * FROM tb_course WHERE institution_id = ?1", nativeQuery = true)
-    Page<Course> buscarCursosPorNomeInstituicao(Long id,  PageRequest pageRequest);
+    Page<Course> searchCoursesByNameInstitution(Long id,  PageRequest pageRequest);
 }

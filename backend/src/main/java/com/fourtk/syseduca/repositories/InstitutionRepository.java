@@ -17,5 +17,5 @@ public interface InstitutionRepository extends JpaRepository<Institution, Long> 
     Institution findByName(String nameInstitution);
 
     @Query(value="SELECT * FROM tb_institution i WHERE i.name LIKE %?1%", nativeQuery=true)
-    Optional<Institution> GetIdbyName(String nameInstitution);
+    Institution getIdbyName(String nameInstitution);
 }

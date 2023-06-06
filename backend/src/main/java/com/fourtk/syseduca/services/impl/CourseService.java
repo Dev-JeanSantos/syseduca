@@ -58,13 +58,16 @@ public class CourseService implements ICourseService {
     @Transactional(readOnly = true)
     public Page<CourseResponse> coursesOfInstitution(String nameInstitution, PageRequest pageRequest) {
 
-        nameInstitution = nameInstitution.toUpperCase();
-        Optional<Institution> possibleInsititution = institutionRepository.GetIdbyName(nameInstitution);
-        Institution institution = possibleInsititution.orElseThrow(() -> new ResourcesNotFoundException("Institution Not Found"));
-//        possibleInsititution.orElseThrow(() -> new NonUniqueResultException("Mellhore sua busca"));
-
-        Page<Course> coursesByInstitution = repository.buscarCursosPorNomeInstituicao(institution.getId(), pageRequest);
-        return coursesByInstitution.map(CourseResponse::new);
+        try{
+            String institutionUperCase = nameInstitution.toUpperCase();
+            Institution institution = institutionRepository.getIdbyName(institutionUperCase);
+            Page<Course> courses = repository.searchCoursesByNameInstitution(institution.getId(), pageRequest);
+            return courses.map(CourseResponse::new);
+        }catch (NullPointerException e){
+            throw new NullPointerException("Institution id not found!");
+        }catch (NonUniqueResultException e){
+            throw new NonUniqueResultException("Refine your search!");
+        }
     }
 
     @Transactional

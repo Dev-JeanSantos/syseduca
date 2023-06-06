@@ -56,13 +56,12 @@ public class CourseController {
 
     @GetMapping(value = "/reports")
     public ResponseEntity<Page<CourseResponse>> coursesOfInstitution(
-            @RequestParam(value = "nameInstitution", defaultValue = "0") String nameInstitution,
+            @RequestParam(value = "nameInstitution", defaultValue = "") String nameInstitution,
             @RequestParam(value = "page", defaultValue = "0") Integer page,
-            @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linePerPage,
+            @RequestParam(value = "linesPerPage", defaultValue = "20") Integer linePerPage,
             @RequestParam(value = "direction", defaultValue = "ASC") String direction,
             @RequestParam(value = "orderBy", defaultValue = "name") String orderBy
     ){
-//        String nameInstitution = "IASMIM";
         PageRequest pageRequest = PageRequest.of(page, linePerPage, Sort.Direction.valueOf(direction), orderBy);
         logger.info("Start coursesOfInstitution - Controller");
         System.out.println(nameInstitution);

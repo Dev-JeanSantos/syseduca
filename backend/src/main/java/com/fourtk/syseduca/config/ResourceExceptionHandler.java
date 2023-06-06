@@ -2,6 +2,7 @@ package com.fourtk.syseduca.config;
 
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
 import com.fourtk.syseduca.services.exceptions.ResourcesNotFoundException;
+import jakarta.persistence.NonUniqueResultException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +68,40 @@ public class ResourceExceptionHandler {
             err.addError(f.getField(), f.getDefaultMessage());
 
         }
+
+        return ResponseEntity.status(status).body(err);
+
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<StandardError> idNotFound(NullPointerException e, HttpServletRequest request){
+
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        StandardError err =  new StandardError();
+
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Id not found!");
+        err.setMessage(e.getMessage());
+        err.setPath(request.getRequestURI());
+
+        return ResponseEntity.status(status).body(err);
+
+    }
+
+    @ExceptionHandler(NonUniqueResultException.class)
+    public ResponseEntity<StandardError> alwaysResults(NonUniqueResultException e, HttpServletRequest request){
+
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
+        StandardError err =  new StandardError();
+
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Search with multiple results!");
+        err.setMessage(e.getMessage());
+        err.setPath(request.getRequestURI());
 
         return ResponseEntity.status(status).body(err);
 

@@ -9,8 +9,10 @@ INSERT INTO tb_institution ( name, cnpj, inep , address, postal_code, email, cit
 INSERT INTO tb_institution ( name, cnpj, inep , address, postal_code, email, city, uf, complement, phone) VALUES ('INSTITUTO EDUCACIONAL CASTELINHO ENCANTADO','222222227/0001-33', '33099944', 'RUA MANOEL JOAO GONCALVES, 571 CENTRO', '000000-001', 'castelinho@gmail.com', 'Tanguá', 'RJ', 'S/C', ' (21) 2747-1375');
 
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'MATERNAL',4,'BIMESTRE','WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
+INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'MATERNAL',4,'BIMESTRE','WAITING','CHILD_EDUCATION', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'PRIMEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'SEGUNDO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
+INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'TERCEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'TERCEIRO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'QUARTO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (1,'QUINTO ANO',4,'BIMESTRE', 'WAITING','FIRST_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
