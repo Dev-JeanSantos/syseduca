@@ -1,6 +1,7 @@
 package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.DisciplineRequest;
+import com.fourtk.syseduca.dto.requesties.DisciplineUpdateRequest;
 import com.fourtk.syseduca.dto.responses.DisciplineResponse;
 import com.fourtk.syseduca.services.impl.DisciplineService;
 import jakarta.validation.Valid;
@@ -64,7 +65,7 @@ public class DisciplineController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<DisciplineRequest> update(@PathVariable Long id,@Valid @RequestBody DisciplineRequest dto){
+    public ResponseEntity<DisciplineUpdateRequest> update(@PathVariable Long id,@Valid @RequestBody DisciplineUpdateRequest dto){
 
         logger.info("Start update - Controller");
 

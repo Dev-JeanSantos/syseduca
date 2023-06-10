@@ -1,8 +1,8 @@
 package com.fourtk.syseduca.services.impl;
 
 import com.fourtk.syseduca.controllers.CourseController;
-import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.requesties.DisciplineRequest;
+import com.fourtk.syseduca.dto.requesties.DisciplineUpdateRequest;
 import com.fourtk.syseduca.dto.responses.DisciplineResponse;
 import com.fourtk.syseduca.models.Discipline;
 import com.fourtk.syseduca.repositories.DisciplineRepository;
@@ -62,16 +62,16 @@ public class DisciplineService {
     }
 
     @Transactional
-    public DisciplineRequest update(Long id, DisciplineRequest dto) {
+    public DisciplineUpdateRequest update(Long id, DisciplineUpdateRequest dto) {
 
         logger.info("Start Update - Service");
         try {
             Discipline entity =  repository.getOne(id);
-            copyDtoToEntity(dto, entity);
+            copyUpdateToEntity(dto, entity);
             entity =  repository.save(entity);
 
         logger.info("Finalized Update - Service");
-            return  new DisciplineRequest(entity);
+            return  new DisciplineUpdateRequest(entity);
         }catch (EntityNotFoundException e){
             throw new ResourcesNotFoundException(" Id Not Found "+ id);
         }
@@ -111,20 +111,15 @@ public class DisciplineService {
         entity.setPeriodicity(request.getPeriodicity());
         entity.setId(request.getId());
         entity.setWorkload(request.getWorkload());
-        entity.setDisciplineCode(request.getDisciplineCode());
         entity.setStatus(request.getStatus());
         entity.setPeriod(request.getPeriod());
     }
-//    private void copyUpdateToEntity(CourseRequest request, Course entity) {
-//        Institution institution = institutionRepository.getOne(request.getIdInstitution());
-//        entity.setInstitution(institution);
-//
-//        entity.setName(request.getName());
-//        entity.setDuration(request.getDuration());
-//        entity.setPeriodicity(request.getPeriodicity());
-//        entity.setStatus(request.getStatus());
-//        entity.setSegment(request.getSegment());
-//    }
+    private void copyUpdateToEntity(DisciplineUpdateRequest request, Discipline entity) {
+        entity.setName(request.getName());
+        entity.setPeriodicity(request.getPeriodicity());
+        entity.setWorkload(request.getWorkload());
+        entity.setPeriod(request.getPeriod());
+    }
 
 //    public List<CoursesOfInstitutionVO> findByName(String nameInstitution) {
 ////        Institution institution = institutionRepository.findByName(nameInstitution);

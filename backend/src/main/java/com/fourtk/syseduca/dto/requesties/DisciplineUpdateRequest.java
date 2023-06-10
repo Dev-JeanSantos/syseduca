@@ -1,15 +1,11 @@
 package com.fourtk.syseduca.dto.requesties;
 
-import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Discipline;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class DisciplineRequest {
-
-    private Long id;
-
+public class DisciplineUpdateRequest {
     @Size(min = 5, max = 60, message = "Name must be between 5 and 60 characters")
     @NotBlank(message = "Required field")
     private String name;
@@ -23,40 +19,25 @@ public class DisciplineRequest {
     @NotBlank(message = "Required field")
     private String periodicity;
 
-    private Status status = Status.ACTIVE;
 
-    public DisciplineRequest() {
+    public DisciplineUpdateRequest() {
     }
 
-    public DisciplineRequest(Long id,
-                             String name,
-                             Integer workload,
-                             Integer period,
-                             String periodicity,
-                             Status status) {
-        this.id = id;
+    public DisciplineUpdateRequest(String name,
+                                   Integer workload,
+                                   Integer period,
+                                   String periodicity) {
         this.name = name;
         this.workload = workload;
         this.period = period;
         this.periodicity = periodicity;
-        this.status = status;
     }
 
-    public DisciplineRequest(Discipline entity) {
-        this.id = entity.getId();
+    public DisciplineUpdateRequest(Discipline entity) {
         this.name = entity.getName();
         this.workload = entity.getWorkload();
         this.period = entity.getPeriod();
         this.periodicity = entity.getPeriodicity();
-        this.status = entity.getStatus();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -91,23 +72,13 @@ public class DisciplineRequest {
         this.periodicity = periodicity;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
         return "DisciplineRequest{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", workload=" + workload +
                 ", period=" + period +
                 ", periodicity='" + periodicity + '\'' +
-                ", status=" + status +
                 '}';
     }
 }

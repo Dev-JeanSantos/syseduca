@@ -32,17 +32,17 @@ INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, seg
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'OITAVO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 INSERT INTO tb_course ( institution_id, name, duration, periodicity, status, segment, date_create) VALUES (2,'NONO ANO',4,'BIMESTRE', 'WAITING','SECOUND_SEGMENT', TIMESTAMP WITH TIME ZONE '2023-05-21T21:00:00Z');
 
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('LÍNGUA PORTUGUESA', 80, 4,'BIMESTRE','ACTIVE', 1);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('MATEMÁTICA', 80, 4,'BIMESTRE','ACTIVE', 2);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('HISTÓRIA', 40, 4,'BIMESTRE','ACTIVE', 3);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('GEOGRAFIA', 40, 4,'BIMESTRE','ACTIVE', 4);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('LÍNGUA INGLESA', 40, 4,'BIMESTRE','ACTIVE', 5);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('CIÊNCIAS', 40, 4,'BIMESTRE','ACTIVE', 6);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('ARTES', 40, 4,'BIMESTRE','ACTIVE', 7);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('EDUCAÇÃO FÍSICA', 40, 4,'BIMESTRE','ACTIVE', 8);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('EDUCAÇÃO MORAL E CÍVICA', 20, 4,'BIMESTRE','ACTIVE', 9);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('ENSINO RELIGIOSO', 20, 4,'BIMESTRE','ACTIVE', 10);
-INSERT INTO tb_discipline (name, workload, period, periodicity, status, discipline_code ) VALUES ('MÚSICA', 20, 4,'BIMESTRE','ACTIVE', 11);
+INSERT INTO tb_discipline (name, workload, period, periodicity, status ) VALUES ('LÍNGUA PORTUGUESA', 80, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('MATEMÁTICA', 80, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('HISTÓRIA', 40, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('GEOGRAFIA', 40, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('LÍNGUA INGLESA', 40, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('CIÊNCIAS', 40, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('ARTES', 40, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('EDUCAÇÃO FÍSICA', 40, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('EDUCAÇÃO MORAL E CÍVICA', 20, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('ENSINO RELIGIOSO', 20, 4,'BIMESTRE','ACTIVE');
+INSERT INTO tb_discipline (name, workload, period, periodicity, status  ) VALUES ('MÚSICA', 20, 4,'BIMESTRE','ACTIVE');
 
 INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,1);
 INSERT INTO tb_course_discipline (course_id,discipline_id ) VALUES (1,2);

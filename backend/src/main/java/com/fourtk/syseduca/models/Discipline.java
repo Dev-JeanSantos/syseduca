@@ -33,10 +33,6 @@ public class Discipline {
     @NotBlank(message = "Required field")
     private String periodicity;
 
-
-    @NotNull(message = "Required field")
-    private Integer disciplineCode;
-
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 
@@ -56,14 +52,12 @@ public class Discipline {
                       Integer workload,
                       Integer period,
                       String periodicity,
-                      Integer disciplineCode,
                       Status status) {
         this.id = id;
         this.name = name;
         this.workload = workload;
         this.period = period;
         this.periodicity = periodicity;
-        this.disciplineCode = disciplineCode;
         this.status = status;
     }
 
@@ -113,14 +107,6 @@ public class Discipline {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public Integer getDisciplineCode() {
-        return disciplineCode;
-    }
-
-    public void setDisciplineCode(Integer disciplineCode) {
-        this.disciplineCode = disciplineCode;
     }
 
     @Override

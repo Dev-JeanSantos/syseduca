@@ -1,15 +1,9 @@
 package com.fourtk.syseduca.dto.responses;
 
-import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
-import com.fourtk.syseduca.models.Course;
 import com.fourtk.syseduca.models.Discipline;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 public class DisciplineResponse implements Serializable {
 
@@ -21,8 +15,6 @@ public class DisciplineResponse implements Serializable {
 
     private Integer period;
 
-    private Integer disciplineCode;
-
     private String periodicity;
 
     private Status status = Status.ACTIVE;
@@ -33,13 +25,11 @@ public class DisciplineResponse implements Serializable {
     public DisciplineResponse(String name,
                               Integer workload,
                               Integer period,
-                              Integer disciplineCode,
                               String periodicity,
                               Status status) {
         this.name = name;
         this.workload = workload;
         this.period = period;
-        this.disciplineCode = disciplineCode;
         this.periodicity = periodicity;
         this.status = status;
     }
@@ -48,7 +38,6 @@ public class DisciplineResponse implements Serializable {
         this.name = entity.getName();
         this.workload = entity.getWorkload();
         this.period = entity.getPeriod();
-        this.disciplineCode = entity.getDisciplineCode();
         this.periodicity = entity.getPeriodicity();
         this.status = entity.getStatus();
     }
@@ -77,14 +66,6 @@ public class DisciplineResponse implements Serializable {
         this.period = period;
     }
 
-    public Integer getDisciplineCode() {
-        return disciplineCode;
-    }
-
-    public void setDisciplineCode(Integer disciplineCode) {
-        this.disciplineCode = disciplineCode;
-    }
-
     public String getPeriodicity() {
         return periodicity;
     }
@@ -107,7 +88,6 @@ public class DisciplineResponse implements Serializable {
                 "name='" + name + '\'' +
                 ", workload=" + workload +
                 ", period=" + period +
-                ", disciplineCode=" + disciplineCode +
                 ", periodicity='" + periodicity + '\'' +
                 ", status=" + status +
                 '}';
