@@ -13,9 +13,6 @@ import java.util.Optional;
 public interface InstitutionRepository extends JpaRepository<Institution, Long> {
     Institution findByEmail(String email);
     Institution findByCnpj(String cnpj);
-
-    Institution findByName(String nameInstitution);
-
     @Query(value="SELECT * FROM tb_institution i WHERE i.name LIKE %?1%", nativeQuery=true)
     Institution getIdbyName(String nameInstitution);
 }

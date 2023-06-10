@@ -40,7 +40,8 @@ public class Discipline {
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 
-    @ManyToMany(mappedBy = "disciplines")
+    @ManyToMany(mappedBy = "disciplines",
+    fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Course> courses = new HashSet<>();
 
     public Discipline() {

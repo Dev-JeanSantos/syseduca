@@ -74,16 +74,16 @@ public class DisciplineController {
         return ResponseEntity.ok().body(dto);
 
     }
-//
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<CourseResponse> delete(@PathVariable Long id){
-//
-//        logger.info("Start delete - Controller");
-//        service.delete(id);
-//        logger.info("Finalized delete - Controller");
-//
-//        return ResponseEntity.noContent().build();
-//    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<DisciplineResponse> delete(@PathVariable Long id){
+
+        logger.info("Start delete - Controller");
+        service.delete(id);
+        logger.info("Finalized delete - Controller");
+
+        return ResponseEntity.noContent().build();
+    }
 //
 //    @PutMapping(value = "/{id}/active")
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
