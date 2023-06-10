@@ -1,16 +1,12 @@
 package com.fourtk.syseduca.models;
 
-import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_discipline")
@@ -39,6 +35,13 @@ public class Discipline {
     @ManyToMany(mappedBy = "disciplines",
     fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Course> courses = new HashSet<>();
+
+
+    @ManyToMany(mappedBy = "teacherLearningDiscipline",
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Teacher> teachers = new ArrayList<>();
+
+
 
     public Discipline() {
     }
