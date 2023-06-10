@@ -3,12 +3,14 @@ package com.fourtk.syseduca.controllers;
 import com.fourtk.syseduca.dto.requesties.DisciplineRequest;
 import com.fourtk.syseduca.dto.requesties.DisciplineUpdateRequest;
 import com.fourtk.syseduca.dto.responses.DisciplineResponse;
+import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.services.impl.DisciplineService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -85,46 +87,33 @@ public class DisciplineController {
 
         return ResponseEntity.noContent().build();
     }
-//
-//    @PutMapping(value = "/{id}/active")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void changeStatusActive(@PathVariable Long id){
-//
-//        logger.info("Start change status  - Controller");
-//        service.updateStatus(id, Status.ACTIVE);
-//        logger.info("Finalized change status  - Controller");
-//
-//    }
-//    @PutMapping(value = "/{id}/inactive")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void changeStatusInactive(@PathVariable Long id){
-//
-//        logger.info("Start change status  - Controller");
-//        service.updateStatus(id, Status.INACTIVE);
-//        logger.info("Finalized change status  - Controller");
-//
-//    }
-//    @PutMapping(value = "/{id}/finished")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void changeStatusFinish(@PathVariable Long id){
-//
-//        logger.info("Start change status  - Controller");
-//        service.updateStatus(id, Status.FINISHED);
-//        logger.info("Finalized change status  - Controller");
-//
-//    }
-//
-//    @GetMapping(value = "/reports")
-//    public ResponseEntity<List<CoursesOfInstitutionVO>> coursesOfInstitution(){
-//
-//        String nameInstitution = "IASMIM";
-//        logger.info("Start coursesOfInstitution - Controller");
-//        System.out.println(nameInstitution);
-//        List<CoursesOfInstitutionVO> lists = service.findByName(nameInstitution);
-//        logger.info("Finalized coursesOfInstitution - Controller");
-//
-//        return ResponseEntity.ok().body(lists);
-//    }
 
+    @PutMapping(value = "/{id}/active")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void changeStatusActive(@PathVariable Long id){
+
+        logger.info("Start change status  - Controller");
+        service.updateStatus(id, Status.ACTIVE);
+        logger.info("Finalized change status  - Controller");
+
+    }
+    @PutMapping(value = "/{id}/inactive")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void changeStatusInactive(@PathVariable Long id){
+
+        logger.info("Start change status  - Controller");
+        service.updateStatus(id, Status.INACTIVE);
+        logger.info("Finalized change status  - Controller");
+
+    }
+    @PutMapping(value = "/{id}/finished")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void changeStatusFinish(@PathVariable Long id){
+
+        logger.info("Start change status  - Controller");
+        service.updateStatus(id, Status.FINISHED);
+        logger.info("Finalized change status  - Controller");
+
+    }
 }
 

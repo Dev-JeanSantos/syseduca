@@ -4,6 +4,7 @@ import com.fourtk.syseduca.controllers.CourseController;
 import com.fourtk.syseduca.dto.requesties.DisciplineRequest;
 import com.fourtk.syseduca.dto.requesties.DisciplineUpdateRequest;
 import com.fourtk.syseduca.dto.responses.DisciplineResponse;
+import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Discipline;
 import com.fourtk.syseduca.repositories.DisciplineRepository;
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
@@ -77,18 +78,18 @@ public class DisciplineService {
         }
     }
 
-//    @Transactional
-//    public void updateStatus(Long id, Status status) {
-//
-//        try {
-//            Course entity = repository.getOne(id);
-//            entity.setStatus(status);
-//            repository.save(entity);
-//        } catch (ResourcesNotFoundException e) {
-//            throw new ResourcesNotFoundException("ID Not Found " + id);
-//        }
-//    }
-//
+    @Transactional
+    public void updateStatus(Long id, Status status) {
+
+        try {
+            Discipline entity = repository.getOne(id);
+            entity.setStatus(status);
+            repository.save(entity);
+        } catch (ResourcesNotFoundException e) {
+            throw new ResourcesNotFoundException("ID Not Found " + id);
+        }
+    }
+
     @Transactional
     public void delete(Long id) {
         try{
@@ -120,12 +121,4 @@ public class DisciplineService {
         entity.setWorkload(request.getWorkload());
         entity.setPeriod(request.getPeriod());
     }
-
-//    public List<CoursesOfInstitutionVO> findByName(String nameInstitution) {
-////        Institution institution = institutionRepository.findByName(nameInstitution);
-//
-//        return repository.getCoursesByInstitution(nameInstitution);
-//
-//
-//    }
 }
