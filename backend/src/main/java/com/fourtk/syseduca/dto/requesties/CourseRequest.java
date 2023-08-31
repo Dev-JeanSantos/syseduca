@@ -3,10 +3,10 @@ package com.fourtk.syseduca.dto.requesties;
 import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class CourseRequest implements Serializable {

@@ -4,7 +4,6 @@ import com.fourtk.syseduca.dto.requesties.CourseRequest;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.services.impl.CourseService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.logging.Logger;
 

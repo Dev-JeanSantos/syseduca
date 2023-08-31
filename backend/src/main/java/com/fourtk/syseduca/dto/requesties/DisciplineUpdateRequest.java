@@ -1,9 +1,11 @@
 package com.fourtk.syseduca.dto.requesties;
 
 import com.fourtk.syseduca.models.Discipline;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 public class DisciplineUpdateRequest {
     @Size(min = 5, max = 60, message = "Name must be between 5 and 60 characters")

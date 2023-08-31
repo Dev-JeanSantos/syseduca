@@ -11,8 +11,6 @@ import com.fourtk.syseduca.repositories.InstitutionRepository;
 import com.fourtk.syseduca.services.ICourseService;
 import com.fourtk.syseduca.services.exceptions.DataBaseException;
 import com.fourtk.syseduca.services.exceptions.ResourcesNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -20,6 +18,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.NonUniqueResultException;
 import java.util.Optional;
 import java.util.logging.Logger;
 

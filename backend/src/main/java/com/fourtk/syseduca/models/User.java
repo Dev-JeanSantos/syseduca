@@ -1,8 +1,7 @@
 package com.fourtk.syseduca.models;
 
 import com.fourtk.syseduca.enums.Genre;
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long photoId;
+
+    @OneToOne(cascade = {CascadeType.DETACH})
+    @JoinColumn(name = "photo_id")
+    private Photo photo;
+
+
     private Long permissionId;
     private String name;
     private Genre genre;

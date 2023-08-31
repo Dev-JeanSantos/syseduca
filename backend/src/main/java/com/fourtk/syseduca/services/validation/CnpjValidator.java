@@ -4,10 +4,10 @@ import com.fourtk.syseduca.config.FieldMessage;
 import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 
