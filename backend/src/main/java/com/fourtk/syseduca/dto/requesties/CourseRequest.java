@@ -53,7 +53,7 @@ public class CourseRequest implements Serializable {
         this.duration = entity.getDuration();
         this.periodicity = entity.getPeriodicity();
         this.segment = entity.getSegment();
-        this.status = entity.getStatus(status);
+        this.status = entity.getStatus();
     }
     public Long getId() {
         return id;

@@ -1,12 +1,18 @@
 package com.fourtk.syseduca.models;
 
 import com.fourtk.syseduca.enums.Genre;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tb_users")
 public class User {

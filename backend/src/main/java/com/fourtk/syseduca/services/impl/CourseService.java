@@ -52,7 +52,7 @@ public class CourseService implements ICourseService {
         logger.info("Start GetAllCourse - Service");
         Page<Course> list = repository.findAll(pageRequest);
         logger.info("Finalized GetAllCourse - Service");
-        return  list.map(x -> new CourseResponse(x));
+        return  list.map(CourseResponse::converterCourseResponse);
     }
 
     @Transactional(readOnly = true)
@@ -62,7 +62,7 @@ public class CourseService implements ICourseService {
             String institutionUperCase = nameInstitution.toUpperCase();
             Institution institution = institutionRepository.getIdbyName(institutionUperCase);
             Page<Course> courses = repository.searchCoursesByNameInstitution(institution.getId(), pageRequest);
-            return courses.map(CourseResponse::new);
+            return courses.map(CourseResponse::converterCourseResponse);
         }catch (NullPointerException e){
             throw new NullPointerException("Institution id not found!");
         }catch (NonUniqueResultException e){
@@ -79,7 +79,7 @@ public class CourseService implements ICourseService {
         Course entity = obj.orElseThrow(() -> new ResourcesNotFoundException("Course Not Found"));
 
         logger.info("Finalized FindById - Service");
-        return new CourseResponse(entity);
+        return CourseResponse.converterCourseResponse(entity);
     }
 
     @Transactional

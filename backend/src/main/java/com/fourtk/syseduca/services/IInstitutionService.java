@@ -1,6 +1,7 @@
 package com.fourtk.syseduca.services;
 
 import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
+import com.fourtk.syseduca.dto.responses.InstitutionAndCourseResponse;
 import com.fourtk.syseduca.dto.responses.InstitutionResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,7 +12,7 @@ public interface IInstitutionService {
 
     public Page<InstitutionResponse> findAllPaged(PageRequest pageRequest);
 
-    public InstitutionRequest findById(Long id);
+    public InstitutionAndCourseResponse findById(Long id);
 
     public InstitutionRequest update(Long id, InstitutionRequest dto);
 

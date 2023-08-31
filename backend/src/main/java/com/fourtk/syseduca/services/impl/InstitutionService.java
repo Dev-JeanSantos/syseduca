@@ -2,6 +2,7 @@ package com.fourtk.syseduca.services.impl;
 
 import com.fourtk.syseduca.controllers.InstitutionController;
 import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
+import com.fourtk.syseduca.dto.responses.InstitutionAndCourseResponse;
 import com.fourtk.syseduca.dto.responses.InstitutionResponse;
 import com.fourtk.syseduca.models.Institution;
 import com.fourtk.syseduca.repositories.InstitutionRepository;
@@ -49,7 +50,7 @@ public class InstitutionService implements IInstitutionService {
     }
 
     @Transactional
-    public InstitutionRequest findById(Long id) {
+    public InstitutionAndCourseResponse findById(Long id) {
 
         logger.info("Start FindById - Service");
         Optional<Institution> obj = repository.findById(id);
@@ -57,7 +58,8 @@ public class InstitutionService implements IInstitutionService {
         Institution entity = obj.orElseThrow(() -> new ResourcesNotFoundException("Institution Not Found"));
 
         logger.info("Finalized FindById - Service");
-        return new InstitutionRequest(entity);
+        InstitutionAndCourseResponse institutionAndCourseResponse = InstitutionAndCourseResponse.converter(entity);
+        return  institutionAndCourseResponse;
     }
 
     @Transactional

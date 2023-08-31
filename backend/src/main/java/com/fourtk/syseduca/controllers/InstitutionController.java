@@ -1,6 +1,7 @@
 package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.InstitutionRequest;
+import com.fourtk.syseduca.dto.responses.InstitutionAndCourseResponse;
 import com.fourtk.syseduca.dto.responses.InstitutionResponse;
 import com.fourtk.syseduca.services.impl.InstitutionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,13 +54,13 @@ public class InstitutionController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<InstitutionRequest>findById(@PathVariable Long id){
+    public ResponseEntity<InstitutionAndCourseResponse>findById(@PathVariable Long id){
         logger.info("Start findById - Controller");
 
-        InstitutionRequest dto = service.findById(id);
+        InstitutionAndCourseResponse institution = service.findById(id);
 
         logger.info("Finalized findById - Controller");
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok().body(institution);
     }
 
     @PutMapping(value = "/{id}")
