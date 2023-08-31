@@ -1,0 +1,22 @@
+version: '1.0'
+services:
+  db:
+    image: mysql:8.0.28
+    container_name: mysqldb
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: syseduca
+      MYSQL_PASSWORD: root
+    networks: rede-interna
+  app:
+    image: backend:v1-dev
+    container_name: backend
+    ports:
+      -8080:8080
+    depends_on:
+      -db
+  networks:
+    name: rede_interna
