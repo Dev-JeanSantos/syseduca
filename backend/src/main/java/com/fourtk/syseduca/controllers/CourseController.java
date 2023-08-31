@@ -1,6 +1,7 @@
 package com.fourtk.syseduca.controllers;
 
 import com.fourtk.syseduca.dto.requesties.CourseRequest;
+import com.fourtk.syseduca.dto.responses.CourseDisciplineResponse;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.services.impl.CourseService;
@@ -72,13 +73,13 @@ public class CourseController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<CourseResponse>findById(@PathVariable Long id){
+    public ResponseEntity<CourseDisciplineResponse>findById(@PathVariable Long id){
         logger.info("Start findById - Controller");
 
-        CourseResponse dto = service.findById(id);
+        CourseDisciplineResponse course = service.findById(id);
 
         logger.info("Finalized findById - Controller");
-        return ResponseEntity.ok().body(dto);
+        return ResponseEntity.ok().body(course);
     }
 
     @PutMapping(value = "/{id}")

@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -44,7 +46,7 @@ public class Course {
     @JoinTable( name = "tb_course_discipline",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "discipline_id"))
-    Set<Discipline> disciplines = new HashSet<>();
+    List<Discipline> disciplines = new ArrayList<>();
 
     private LocalDateTime dateCreate  = LocalDateTime.now();
 }

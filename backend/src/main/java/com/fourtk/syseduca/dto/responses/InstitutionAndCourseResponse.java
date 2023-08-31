@@ -16,14 +16,14 @@ public class InstitutionAndCourseResponse {
 
     private String name;
     private String inep;
-    private List<CourseResponse> courses;
+    private List<CourseDisciplineResponse> courses;
 
     public static InstitutionAndCourseResponse converter(Institution institution) {
         InstitutionAndCourseResponse institutionAndCourseResponse = new InstitutionAndCourseResponse();
         institutionAndCourseResponse.setName(institution.getName());
         institutionAndCourseResponse.setInep(institution.getInep());
         institutionAndCourseResponse.setCourses(
-                institution.getCourses().stream().map(CourseResponse::converterCourseResponse).collect(Collectors.toList()));
+                institution.getCourses().stream().map(CourseDisciplineResponse::converterCourseResponse).collect(Collectors.toList()));
         return institutionAndCourseResponse;
     }
 }

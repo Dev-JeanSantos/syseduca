@@ -45,7 +45,7 @@ public class DisciplineService {
         logger.info("Start GetAllCourse - Service");
         Page<Discipline> list = repository.findAll(pageRequest);
         logger.info("Finalized GetAllCourse - Service");
-        return  list.map(x -> new DisciplineResponse(x));
+        return  list.map(DisciplineResponse::converterDisciplineResponse);
     }
 
     // TODO: 29/05/2023 Implemetar EndPoint buscar por codigo da dsiciplina ao inves do Id
@@ -59,7 +59,7 @@ public class DisciplineService {
         Discipline entity = obj.orElseThrow(() -> new ResourcesNotFoundException("Discipline Not Found"));
 
         logger.info("Finalized FindById - Service");
-        return new DisciplineResponse(entity);
+        return DisciplineResponse.converterDisciplineResponse(entity);
     }
 
     @Transactional

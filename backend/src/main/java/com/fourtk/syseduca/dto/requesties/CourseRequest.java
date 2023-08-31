@@ -3,12 +3,14 @@ package com.fourtk.syseduca.dto.requesties;
 import com.fourtk.syseduca.enums.Segment;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@Data
 public class CourseRequest implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -30,84 +32,15 @@ public class CourseRequest implements Serializable {
     private Segment segment;
     private Status status = Status.WAITING;
 
-    public CourseRequest(Long id,
-                         Long idInstitution,
-                         String name,
-                         Integer duration,
-                         String periodicity,
-                         Segment segment,
-                         Status status) {
-        this.id = id;
-        this.idInstitution = idInstitution;
-        this.name = name;
-        this.duration = duration;
-        this.periodicity = periodicity;
-        this.segment = segment;
-        this.status = status;
-    }
-
-    public CourseRequest(Course entity) {
-        this.id = entity.getId();
-        this.idInstitution = entity.getId();
-        this.name = entity.getName();
-        this.duration = entity.getDuration();
-        this.periodicity = entity.getPeriodicity();
-        this.segment = entity.getSegment();
-        this.status = entity.getStatus();
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getIdInstitution() {
-        return idInstitution;
-    }
-
-    public void setIdInstitution(Long idInstitution) {
-        this.idInstitution = idInstitution;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    public String getPeriodicity() {
-        return periodicity;
-    }
-
-    public void setPeriodicity(String periodicity) {
-        this.periodicity = periodicity;
-    }
-
-    public Segment getSegment() {
-        return segment;
-    }
-
-    public void setSegment(Segment segment) {
-        this.segment = segment;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
+    public static CourseRequest converterRequest(Course entity) {
+        CourseRequest request = new CourseRequest();
+        request.setId(entity.getId());
+        request.setIdInstitution(entity.getInstitution().getId());
+        request.setName(entity.getName());
+        request.setDuration(entity.getDuration());
+        request.setPeriodicity(entity.getPeriodicity());
+        request.setSegment(entity.getSegment());
+        request.setStatus(entity.getStatus());
+        return request;
     }
 }

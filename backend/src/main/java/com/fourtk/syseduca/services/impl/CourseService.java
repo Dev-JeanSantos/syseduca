@@ -2,6 +2,7 @@ package com.fourtk.syseduca.services.impl;
 
 import com.fourtk.syseduca.controllers.CourseController;
 import com.fourtk.syseduca.dto.requesties.CourseRequest;
+import com.fourtk.syseduca.dto.responses.CourseDisciplineResponse;
 import com.fourtk.syseduca.dto.responses.CourseResponse;
 import com.fourtk.syseduca.enums.Status;
 import com.fourtk.syseduca.models.Course;
@@ -43,7 +44,7 @@ public class CourseService implements ICourseService {
         entity = repository.save(entity);
 
         logger.info("Finalized insertCourse - Service");
-        return new CourseRequest(entity);
+        return CourseRequest.converterRequest(entity);
     }
 
     @Transactional(readOnly = true)
@@ -71,7 +72,7 @@ public class CourseService implements ICourseService {
     }
 
     @Transactional
-    public CourseResponse findById(Long id) {
+    public CourseDisciplineResponse findById(Long id) {
 
         logger.info("Start FindById - Service");
         Optional<Course> obj = repository.findById(id);
@@ -79,7 +80,7 @@ public class CourseService implements ICourseService {
         Course entity = obj.orElseThrow(() -> new ResourcesNotFoundException("Course Not Found"));
 
         logger.info("Finalized FindById - Service");
-        return CourseResponse.converterCourseResponse(entity);
+        return CourseDisciplineResponse.converterCourseResponse(entity);
     }
 
     @Transactional
@@ -92,7 +93,7 @@ public class CourseService implements ICourseService {
             entity =  repository.save(entity);
 
         logger.info("Finalized Update - Service");
-            return  new CourseRequest(entity);
+            return  CourseRequest.converterRequest(entity);
         }catch (EntityNotFoundException e){
             throw new ResourcesNotFoundException(" Id Not Found "+ id);
         }

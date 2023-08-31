@@ -40,7 +40,7 @@ public class Discipline {
 
     @ManyToMany(mappedBy = "disciplines",
     fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Course> courses = new HashSet<>();
+    private List<Course> courses = new ArrayList<>();
 
 
     @ManyToMany(mappedBy = "teacherLearningDiscipline",
