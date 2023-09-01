@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -31,5 +33,11 @@ public class Teacher {
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "discipline_id"))
     Set<Discipline> teacherLearningDiscipline = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable( name = "tb_schoolclass_teacher",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "school_class_id"))
+    List<SchoolClass> teacherAlocatedClassroom = new ArrayList<>();
 
 }

@@ -46,4 +46,11 @@ public class Discipline {
     @ManyToMany(mappedBy = "teacherLearningDiscipline",
             fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Teacher> teachers = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable( name = "tb_schoolclass_discipline",
+            joinColumns = @JoinColumn(name = "discipline_id"),
+            inverseJoinColumns = @JoinColumn(name = "school_class_id"))
+    List<SchoolClass> disciplineAlocatedClassroom = new ArrayList<>();
+
 }
